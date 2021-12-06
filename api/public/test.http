@@ -1,0 +1,400 @@
+###test-grupos
+
+GET http://localhost:8888/index.php/movil-bitacora?fechaDesde=20210501&fechaHasta=20210530&mobiPendiente=1 HTTP/1.1
+
+###
+
+GET http://localhost:8888/index.php/materia-prima HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/grupo HTTP/1.1
+Content-Type: application/json
+
+{
+    "grupNombre":"Camionetas",
+    "grupDescripcion":"Camionetas HIlux modelo 2020"
+}
+
+###
+
+PUT http://localhost:8888/index.php/grupo HTTP/1.1
+
+{
+    "grupId": 1,
+    "grupNombre": "Camionetas",
+    "grupDescripcion": "Hilux"
+}
+
+###test-servicio
+
+
+GET http://localhost:8888/index.php/servicio HTTP/1.1
+
+###
+
+DELETE http://localhost:8888/index.php/servicio/5 HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/servicio HTTP/1.1
+Content-Type: application/json
+
+{
+    "servNombre":"motor",
+    "servDescripcion":"verificar motor",
+    "servPeriodo": 70,
+    "servKM": 15,
+    "servFecha": 0
+}
+
+###
+
+PUT http://localhost:8888/index.php/servicio HTTP/1.1
+
+{
+    "servNombre": "ruedas",
+    "servDescripcion": "verificar ruedas",
+    "servPeriodo": 80,
+    "servKM": 15,
+    "servFecha": 0,
+    "servId": 9
+}
+
+
+###test-tarea
+
+
+GET http://localhost:8888/index.php/tarea HTTP/1.1
+
+
+###
+
+DELETE http://localhost:8888/index.php/tarea/8 HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/tarea HTTP/1.1
+Content-Type: application/json
+
+{
+    "tareNombre": "cambio de aceite",
+    "tareDescripcion": "cambiar el aceite del vehiculo",
+    "tareUnidadMedida": "ml",
+    "tareCantidad": 1,
+    "tareCosto": 11
+}
+
+###
+
+PUT http://localhost:8888/index.php/tarea HTTP/1.1
+
+{
+    "tareNombre": "xx",
+    "tareDescripcion": "xx",
+    "tareUnidadMedida": "ml",
+    "tareCantidad": 1,
+    "tareCosto": 11,
+    "tareId":7
+}
+
+###test-servicio-tarea
+
+
+GET http://localhost:8888/index.php/servicio-tarea HTTP/1.1
+
+
+###
+
+
+GET http://localhost:8888/index.php/servicio-tarea HTTP/1.1
+
+
+###
+
+DELETE http://localhost:8888/index.php/servicio-tarea/1 HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/servicio-tarea HTTP/1.1
+Content-Type: application/json
+
+{
+    "setaServId":7,
+    "setaTareId":1,
+}
+
+###
+
+PUT http://localhost:8888/index.php/servicio-tarea HTTP/1.1
+
+{
+    "setaServId":2,
+    "setaTareId":1,
+    "setaId": 15
+    
+}
+
+
+### grupo-servicio
+
+
+GET http://localhost:8888/index.php/grupo-servicio?grusGrupId=1 HTTP/1.1
+
+
+###
+
+DELETE http://localhost:8888/index.php/grupo-servicio/48 HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/grupo-servicio HTTP/1.1
+Content-Type: application/json
+
+{
+    "grusGrupId": 1,
+    "grusServId": 1,
+    "grusPeriodo": 1,
+    "grusKM":1,
+    "grusFecha": 1 
+}
+
+###
+
+PUT http://localhost:8888/index.php/grupo-servicio HTTP/1.1
+
+{
+    "grusGrupId": 38,
+    "grusServId": 9,
+    "grusPeriodo": 2,
+    "grusKM": 4,
+    "grusFecha": 0,
+    "grusId": 89
+    
+}
+
+### movil-servicio
+
+
+GET http://localhost:8888/index.php/movil-servicio HTTP/1.1
+
+
+###
+
+DELETE http://localhost:8888/index.php/movil-servicio/8 HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/movil-servicio HTTP/1.1
+Content-Type: application/json
+
+{
+    "moseMoviId":16,
+    "moseServId": 1,
+    "mosePeriodo": 1,
+    "moseKM": 1,
+    "moseFecha":1 
+}
+
+###
+
+PUT http://localhost:8888/index.php/movil-servicio HTTP/1.1
+
+{
+    "moseServId": 1,
+    "mosePeriodo": 30,
+    "moseKM":12000,
+    "moseFecha":0,
+    "moseId":5
+    
+}
+
+### movil-bitacora
+
+
+GET http://localhost:8888/index.php/movil-bitacora?mobiPendiente=1 HTTP/1.1
+
+
+###
+
+DELETE http://localhost:8888/index.php/movil-bitacora/3 HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/movil-bitacora HTTP/1.1
+Content-Type: application/json
+
+{
+    "mobiMoviId":16,
+    "mobiMoseId":5,
+    "mobiServId":2,
+    "mobiFecha":"2020-12-19T00:00:00",
+    "mobiObservaciones":"nada",
+    "mobiOdometro":15000,
+    "mobiProximoOdometro":25000,
+    "mobiProximaFecha":1,
+    "mobiIdAnterior":0,
+    "mobiSiguiente":0,
+    "mobiPendiente":0
+}
+
+###
+
+PUT http://localhost:8888/index.php/movil-bitacora HTTP/1.1
+
+{
+    "mobiServId":1,
+    "mobiFecha": "2021-03-31",
+    "mobiObservaciones":"llisto servicio pendiente. Proximo a los 116000 km.",
+    "mobiOdometro":104000,
+    "mobiProximoOdometro":116000,
+    "mobiProximaFecha":"2021-03-18",
+    "mobiIdAnterior":21,
+    "mobiSiguiente":0,
+    "mobiPendiente":1,
+  
+
+    "mobiId":22
+    
+}
+
+
+### bitacora-tarea
+
+
+GET http://localhost:8888/index.php/bitacora-tarea HTTP/1.1
+
+
+###
+
+DELETE http://localhost:8888/index.php/bitacora-tarea/12 HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/bitacora-tarea HTTP/1.1
+Content-Type: application/json
+
+{
+    "bitaMobiId": 17,
+    "bitaTareId": 1,
+    "bitaObservaciones": "observaciones",
+    "bitaCantidad": 2,
+    "bitaCosto": 3000
+
+}
+
+###
+
+PUT http://localhost:8888/index.php/bitacora-tarea HTTP/1.1
+
+{
+    "bitaTareId": 1,
+    "bitaObservaciones": "observaciones",
+    "bitaCantidad": 1,
+    "bitaCosto": 4000,
+    "bitaId": 1
+
+    
+}
+### movil
+
+
+GET http://localhost:8888/index.php/movil?activo HTTP/1.1
+
+
+###
+
+DELETE http://localhost:8888/index.php/movil/18 HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/movil HTTP/1.1
+Content-Type: application/json
+
+{
+    "moviId":79,
+    "moviModoFecha":"2020-12-19T00:00:00",
+    "moviModoOdometro":13000,
+    
+
+}
+
+###
+
+PUT http://localhost:8888/index.php/movil HTTP/1.1
+
+{   
+    "moviModoFecha":"2020-12-15T00:00:00",
+    "moviModoOdometro":15000,
+    "moviBorrado": 0,
+    "moviId": 1
+}
+
+### movil-grupo
+
+
+GET http://localhost:8888/index.php/movil-grupo HTTP/1.1
+
+
+###
+
+DELETE http://localhost:8888/index.php/movil-grupo/10 HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/movil-grupo HTTP/1.1
+Content-Type: application/json
+
+{
+    "mogrMoviId":16,
+    "mogrGrupId":2
+}
+
+###
+
+PUT http://localhost:8888/index.php/movil-grupo HTTP/1.1
+
+{
+    
+}
+
+### movil-odometro
+
+
+GET http://localhost:8888/index.php/movil-odometro HTTP/1.1
+
+
+###
+
+DELETE http://localhost:8888/index.php/movil-odometro/10 HTTP/1.1
+
+
+###
+
+POST http://localhost:8888/index.php/movil-odometro HTTP/1.1
+Content-Type: application/json
+
+{
+    "modoMoviId": 1,
+    "modoFecha": "2020-12-19T00:00:00",
+    "modoOdometro": 25000
+}
+
+###
+
+PUT http://localhost:8888/index.php/movil-odometro HTTP/1.1
+
+{
+    
+}
+
